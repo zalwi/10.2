@@ -44,7 +44,6 @@ public class CashMachineOperator {
                 default ->
                         {showInformationBeforeNextLoop("Podano zły numer!");}
             };
-            //loop=false;
         }while(loop);
     }
 
