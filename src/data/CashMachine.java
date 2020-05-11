@@ -17,7 +17,7 @@ public class CashMachine {
         try {
             bankAccount.withdraw(amount);
         } catch (WithdrawLimitException | NegativeBalanceException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());;
         }
     }
 
