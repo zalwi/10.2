@@ -4,6 +4,7 @@ import logic.NegativeBalanceException;
 import logic.WithdrawLimitException;
 
 public class BankAccount {
+    static final int WITHRAW_LIMIT=1000;
     private Person person;
     private double balance;
 
@@ -20,7 +21,7 @@ public class BankAccount {
 
     public void withdraw(double amount){
         if(amount > balance) throw new NegativeBalanceException("Niewystarczająca ilość wymaganych środków na koncie, brakuje " + (balance-amount) + "zł");
-        if(amount > 1000) throw new WithdrawLimitException("Kwota jednorazowej wypłaty(1000zł) przekroczona o " + (amount-1000) + "zł");
+        if(amount > WITHRAW_LIMIT) throw new WithdrawLimitException("Kwota jednorazowej wypłaty("+WITHRAW_LIMIT+"zł) przekroczona o " + (amount-WITHRAW_LIMIT) + "zł");
         balance -= amount;
         System.out.println("Stan konta po wypłacie= " + getBalance());
     }
