@@ -1,5 +1,8 @@
 package data;
 
+import logic.NegativeBalanceException;
+import logic.WithdrawLimitException;
+
 public class BankAccount {
     private Person person;
     private double balance;
@@ -16,7 +19,8 @@ public class BankAccount {
     }
 
     public void withdraw(double amount){
-        if(amount > balance) throw new IllegalArgumentException("Brak wymaganych środków na koncie");
+        if(amount > balance) throw new NegativeBalanceException("Niewystarczająca ilość wymaganych środków na koncie, brakuje " + (balance-amount) + "zł");
+        if(amount > 1000) throw new WithdrawLimitException("Kwota jednorazowej wypłaty(1000zł) przekroczona o " + (amount-1000) + "zł");
         balance -= amount;
         System.out.println(this.toString());
     }
